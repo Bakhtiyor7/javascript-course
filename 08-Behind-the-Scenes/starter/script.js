@@ -1,20 +1,20 @@
 'use strict';
 
-const a = 'jonas';
-first();
-
-function first() {
-  const b = 'Hello';
-  console.log(a);
-  second();
-
-  function second() {
-    const c = 'hi';
-    console.log(b);
-    var d = 'I am var';
-  }
-  return;
-}
+// const a = 'jonas';
+// first();
+//
+// function first() {
+//   const b = 'Hello';
+//   console.log(a);
+//   second();
+//
+//   function second() {
+//     const c = 'hi';
+//     console.log(b);
+//     var d = 'I am var';
+//   }
+//   return;
+// }
 
 // // scopes only have access to variables inside it's scope, not outer scope!
 // console.log('executing functions');
@@ -125,11 +125,50 @@ function first() {
 // addExpr(2, 5);
 // addExpr(2, 5, 8, 12);
 
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
-};
-addArrow(2, 5, 8);
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 8);
 
 
 // Objects VS Primitives
+// Primitive types
+let lastName = 'Akhatov'
+let oldLastName = lastName
+lastName = 'Knonimkulov'
+
+console.log(lastName, oldLastName) // Khonimkulov, Akhatov // because the two
+// variables are stored as 2 elements in the memory
+
+// Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', marriedJessica);
+// marriedJessica = {};
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2) // copies jessica2 object and
+// assigns a new object from it and merges them
+jessicaCopy.lastName = 'Davis'
+
+jessicaCopy.family.push('Leo')
+jessicaCopy.family.push('Alex')
+
+console.log('Before marriage Jessica:', jessica2)
+console.log('After marriage Jessica:', jessicaCopy) // both objects would
+// have the same items in family array because
+// the shallow copy (Object.assign()) works only in the first level
